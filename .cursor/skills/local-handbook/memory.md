@@ -4,7 +4,7 @@
 
 - **Package:** `@gitlawb/openclaude` — CLI bridging Claude Code to many LLM providers (OpenAI, Gemini, Ollama, etc.).
 - **Build / run:** `bun run scripts/build.ts`; `node dist/cli.mjs` after build; `bin/openclaude` entry.
-- **Handbook / GitHub:** the Cursor **local-handbook** skill was merged via **PR #1** (`https://github.com/adrianstanca1/openclaude/pull/1`, state **MERGED**). Upstream mirror: **`https://github.com/Gitlawb/openclaude`**; this fork’s remote is **`origin`** (`https://github.com/adrianstanca1/openclaude.git`). After a large hiatus, run **`git fetch origin`** and align this clone with **`origin/main`** so you are not on a stale or unrelated history.
+- **Handbook / GitHub:** merged on the fork via **PR #1** (`https://github.com/adrianstanca1/openclaude/pull/1`). **Upstream contribution:** `https://github.com/Gitlawb/openclaude/pull/766` (proposes the same `.cursor/skills/local-handbook/` for **Gitlawb/openclaude**). Canonical upstream repo: **`https://github.com/Gitlawb/openclaude`**; this fork’s remote is **`origin`** (`https://github.com/adrianstanca1/openclaude.git`). After a long pause, run **`git fetch origin`** and stay aligned with **`origin/main`**.
 
 ### Verification (pick narrowest match)
 
