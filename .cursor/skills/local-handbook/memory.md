@@ -2,10 +2,9 @@
 
 ## This repository (`openclaude-main`)
 
-- **Path:** `/Users/adrianstanca/Desktop/openclaude-main`
 - **Package:** `@gitlawb/openclaude` — CLI bridging Claude Code to many LLM providers (OpenAI, Gemini, Ollama, etc.).
 - **Build / run:** `bun run scripts/build.ts`; `node dist/cli.mjs` after build; `bin/openclaude` entry.
-- **Handbook on GitHub:** branch **`sync/cursor-handbook`** → **PR** `https://github.com/adrianstanca1/openclaude/pull/1` (fork **`origin`**; upstream **`Gitlawb/openclaude`**). Local `main` may still diverge from `origin/main` (unrelated history); use PR or fresh clone for long-term sync.
+- **Handbook / GitHub:** the Cursor **local-handbook** skill was merged via **PR #1** (`https://github.com/adrianstanca1/openclaude/pull/1`, state **MERGED**). Upstream mirror: **`https://github.com/Gitlawb/openclaude`**; this fork’s remote is **`origin`** (`https://github.com/adrianstanca1/openclaude.git`). After a large hiatus, run **`git fetch origin`** and align this clone with **`origin/main`** so you are not on a stale or unrelated history.
 
 ### Verification (pick narrowest match)
 
@@ -16,7 +15,7 @@
 
 ## Machine-wide context
 
-Cross-machine bullets live in **`~/.cursor/skills/local-handbook/memory.md`**.
+Cross-machine bullets live in **`~/.cursor/skills/local-handbook/memory.md`** (your home directory on each machine).
 
 ## Anti-patterns (repo + global)
 
