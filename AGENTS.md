@@ -22,6 +22,24 @@ OpenClaude is a **terminal-first coding-agent CLI** (TypeScript / Bun) that spea
 
 Always **`bun run build`** (or `bun run smoke`) after pulling `main` if `dist/` might be stale.
 
+## Local OpenAI-compatible backends & browser UIs
+
+OpenClaude often uses `OPENAI_BASE_URL` against a local server (e.g. [Ollama](https://ollama.com) at `http://127.0.0.1:11434/v1`). **Browser-based** clients (Hermes Workspace and similar) call the same **`/v1/chat/completions`** contract but use cross-origin `fetch`, so failures differ from the CLI.
+
+- **Symptom:** `curl http://127.0.0.1:11434/v1/models` returns **200**, but the browser shows **"Failed to fetch"** or the Network tab shows **403** on `OPTIONS` / requests with an **`Origin`** header — that is usually **CORS**, not a dead server.
+- **Ollama:** set **`OLLAMA_ORIGINS`** to the exact origin(s) of your web UI (comma-separated), or `*` only on trusted dev machines. **Restart** the Ollama service so the variable is applied. Prefer **`http://127.0.0.1:11434/v1`** as the base URL (avoid `0.0.0.0` in the browser).
+- **Sanity check after CORS changes:**
+
+```bash
+curl -sS -D- -o /dev/null -H "Origin: https://example.com" "http://127.0.0.1:11434/v1/models" | head -20
+```
+
+On **GET/POST** responses you want **2xx** plus **`Access-Control-Allow-Origin`** (matching your UI origin or `*`, depending on policy). For **`OPTIONS`** preflight responses, also expect **`Access-Control-Allow-Methods`** and **`Access-Control-Allow-Headers`** to include what the browser sends (e.g. `POST`, `Content-Type`, `Authorization`). If the UI sends cookies or `Authorization: Bearer …` with credentials mode, **`Access-Control-Allow-Credentials: true`** must pair with a **specific** origin (not `*`).
+
+- **Gateway products:** when docs recommend **`pnpm dev`** / **`hermes --gateway`**, point the UI at the **gateway base URL** they print so TLS, routing, and CORS match what the client expects — do not assume a raw Ollama port is enough for every UI.
+
+Hermes links live under **Further reading** (avoid duplicating URLs here).
+
 ## Repository map (high level)
 
 ```
@@ -80,9 +98,10 @@ Other **Cursor / VS Code** assets in this repo (all optional for non-Cursor work
 | `.cursor/skills/openclaude-powerkit/` | Extra skill: verification ladder and MCP notes for this codebase. |
 | `.vscode/settings.json` | Terminal `PATH` prepends for Homebrew / Bun on macOS and Linux. |
 | `.vscode/extensions.json` | Recommended extensions (Bun, Python for `python/tests`). |
-| `.vscode/tasks.json` | Palette tasks for **Smoke**, **Unit tests**, **Provider tests**, **Runtime doctor**. |
+| `.vscode/tasks.json` | Palette tasks for **Smoke**, **Unit tests**, **Provider tests**, **Runtime doctor** (via **`scripts/cursor-dev-path.sh`** so PATH matches integrated terminals). |
+| `scripts/cursor-dev-path.sh` | Shared PATH prepend for **macOS / Linux** (used by `tasks.json`; mirrors `.vscode/settings.json`). |
 
 ## Further reading
 
-- **Hermes-style agent guide** (reference for structure and depth): `https://github.com/NousResearch/hermes-agent/blob/main/AGENTS.md`
+- **Hermes / Nous:** [hermes-agent `AGENTS.md`](https://github.com/NousResearch/hermes-agent/blob/main/AGENTS.md) (structure and depth) and [FAQ & troubleshooting](https://hermes-agent.nousresearch.com/docs/reference/faq) (operators, browser UIs, gateways).
 - **Human-facing docs:** `README.md`, `docs/`, `SECURITY.md`

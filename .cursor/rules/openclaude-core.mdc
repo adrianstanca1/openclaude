@@ -24,12 +24,16 @@ alwaysApply: true
 - Smallest useful diff; match existing imports and patterns in callers.
 - This fork tracks **upstream** `Gitlawb/openclaude` — merge `upstream/main` when preparing shared contributions (see `.cursor/skills/local-handbook/memory.md`).
 
+## Local backends in the browser
+
+If a user sees **"Failed to fetch"** for Hermes Workspace (or any browser UI) against **Ollama** while **`curl` works**, treat it as **CORS** first: **`OLLAMA_ORIGINS`** + restart Ollama, base URL **`http://127.0.0.1:11434/v1`**. Full checklist and links live in **`AGENTS.md` → "Local OpenAI-compatible backends & browser UIs"**.
+
 ## Optional “superpowers” on this machine
 
 Install **Cursor marketplace / plugin** packs you already use elsewhere so they apply here too, for example:
 
 - **Superpowers** (official Claude plugins bundle): brainstorming, verification-before-completion, systematic debugging, writing-plans — search the marketplace for the maintained bundle name you use.
-- **MCP (project `.cursor/mcp.json`):** **Playwright** (browser tools), **Sequential Thinking** (structured reasoning tool), **Memory** (Knowledge Graph memory). Reload MCP in Cursor after edits. For Playwright, keep Chromium installed (`npx playwright install chromium` if browser tools fail to launch).
+- **MCP:** pinned servers live in **`.cursor/mcp.json`** (see **`AGENTS.md`** → *Where Cursor-specific files fit*). Reload MCP in Cursor after edits; for Playwright run **`npx playwright install chromium`** if browser tools fail to launch.
 - **Library docs:** Context7 or similar MCP if you have it configured globally — add the same server block to this project’s `.cursor/mcp.json` when you want parity.
 
 Do not assume a plugin is installed: if a workflow requires it, say so and offer the exact install path (Marketplace name or MCP JSON snippet).

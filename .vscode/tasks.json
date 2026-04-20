@@ -4,13 +4,7 @@
     {
       "label": "OpenClaude: smoke",
       "type": "shell",
-      "command": "bun run smoke",
-      "options": {
-        "cwd": "${workspaceFolder}",
-        "env": {
-          "PATH": "${env:HOME}/.bun/bin:/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
-        }
-      },
+      "command": "${workspaceFolder}/scripts/cursor-dev-path.sh bun run smoke",
       "group": {
         "kind": "test",
         "isDefault": true
@@ -24,13 +18,7 @@
     {
       "label": "OpenClaude: unit tests",
       "type": "shell",
-      "command": "bun test --max-concurrency=1",
-      "options": {
-        "cwd": "${workspaceFolder}",
-        "env": {
-          "PATH": "${env:HOME}/.bun/bin:/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
-        }
-      },
+      "command": "${workspaceFolder}/scripts/cursor-dev-path.sh bun test --max-concurrency=1",
       "group": "test",
       "presentation": {
         "reveal": "always",
@@ -41,13 +29,7 @@
     {
       "label": "OpenClaude: provider tests",
       "type": "shell",
-      "command": "bun run test:provider",
-      "options": {
-        "cwd": "${workspaceFolder}",
-        "env": {
-          "PATH": "${env:HOME}/.bun/bin:/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
-        }
-      },
+      "command": "${workspaceFolder}/scripts/cursor-dev-path.sh bun run test:provider",
       "group": "test",
       "presentation": {
         "reveal": "always",
@@ -58,13 +40,7 @@
     {
       "label": "OpenClaude: runtime doctor",
       "type": "shell",
-      "command": "bun run doctor:runtime",
-      "options": {
-        "cwd": "${workspaceFolder}",
-        "env": {
-          "PATH": "${env:HOME}/.bun/bin:/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
-        }
-      },
+      "command": "${workspaceFolder}/scripts/cursor-dev-path.sh bun run doctor:runtime",
       "group": "test",
       "presentation": {
         "reveal": "always",
