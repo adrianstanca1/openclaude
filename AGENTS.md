@@ -16,6 +16,7 @@ OpenClaude is a **terminal-first coding-agent CLI** (TypeScript / Bun) that spea
 - **Runtime:** [Bun](https://bun.sh) for development scripts and tests.
 - **Build output:** `dist/cli.mjs` (produced by `bun run scripts/build.ts`).
 - **CLI entry (local):** `node dist/cli.mjs` after a successful build, or `bin/openclaude` during development.
+- **Tooling on PATH:** Some editors run shells with a minimal `PATH`, so `bun` may be missing even when Homebrew or `~/.bun/bin` is installed. This repo includes **`.vscode/settings.json`** so VS Code / Cursor integrated terminals prepend `~/.bun/bin`, `/opt/homebrew/bin`, and `/usr/local/bin` on macOS (and `~/.bun/bin` + `/usr/local/bin` on Linux). After cloning, run **`bun install --frozen-lockfile`** before tests so everything in `package.json` is present under `node_modules/`.
 
 Always **`bun run build`** (or `bun run smoke`) after pulling `main` if `dist/` might be stale.
 
