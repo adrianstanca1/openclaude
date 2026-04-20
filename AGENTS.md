@@ -22,6 +22,24 @@ OpenClaude is a **terminal-first coding-agent CLI** (TypeScript / Bun) that spea
 
 Always **`bun run build`** (or `bun run smoke`) after pulling `main` if `dist/` might be stale.
 
+## Local OpenAI-compatible backends & browser UIs
+
+OpenClaude often uses `OPENAI_BASE_URL` against a local server (e.g. [Ollama](https://ollama.com) at `http://127.0.0.1:11434/v1`). **Browser-based** clients (Hermes Workspace and similar) call the same **`/v1/chat/completions`** contract but use cross-origin `fetch`, so failures differ from the CLI.
+
+- **Symptom:** `curl http://127.0.0.1:11434/v1/models` returns **200**, but the browser shows **"Failed to fetch"** or the Network tab shows **403** on `OPTIONS` / requests with an **`Origin`** header — that is usually **CORS**, not a dead server.
+- **Ollama:** set **`OLLAMA_ORIGINS`** to the exact origin(s) of your web UI (comma-separated), or `*` only on trusted dev machines. **Restart** the Ollama service so the variable is applied. Prefer **`http://127.0.0.1:11434/v1`** as the base URL (avoid `0.0.0.0` in the browser).
+- **Sanity check after CORS changes:**
+
+```bash
+curl -sS -D- -o /dev/null -H "Origin: https://example.com" "http://127.0.0.1:11434/v1/models" | head -20
+```
+
+You want a **2xx** status and **`Access-Control-Allow-Origin`** (or equivalent) on the response once CORS is configured.
+
+- **Gateway products:** when docs recommend **`pnpm dev`** / **`hermes --gateway`**, point the UI at the **gateway base URL** they print so TLS, routing, and CORS match what the client expects — do not assume a raw Ollama port is enough for every UI.
+
+Hermes-oriented reference: [hermes-agent `AGENTS.md`](https://github.com/NousResearch/hermes-agent/blob/main/AGENTS.md) and [FAQ & troubleshooting](https://hermes-agent.nousresearch.com/docs/reference/faq).
+
 ## Repository map (high level)
 
 ```

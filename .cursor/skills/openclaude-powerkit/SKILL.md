@@ -3,8 +3,8 @@ name: openclaude-powerkit
 description: >-
   OpenClaude repo power workflow: read AGENTS.md, run smoke/tests, provider gates,
   MCP stack in .cursor/mcp.json (Playwright, Sequential Thinking, Memory), fork
-  upstream sync. Use for multi-step
-  CLI/provider/tool work, CI parity, or enhancing Cursor setup in this project.
+  upstream sync, local OpenAI backends / browser CORS (Ollama, Hermes-style
+  UIs). Use for multi-step CLI/provider/tool work, CI parity, or Cursor setup.
 ---
 
 # OpenClaude power kit (this repo)
@@ -31,6 +31,10 @@ In **VS Code / Cursor**, you can run the same checks via **Tasks: Run Task** →
 
 - **Providers:** `src/services/api/` — see **`.cursor/rules/openclaude-providers.mdc`** when those globs apply.
 - **Tools / MCP / permissions:** **`.cursor/rules/openclaude-tools-mcp.mdc`** when those globs apply.
+
+## Browser UI vs CLI (Ollama, Hermes Workspace)
+
+When **`curl …/v1/models` succeeds** but a **browser** shows **Failed to fetch** against the same host, assume **CORS** until disproven. For **Ollama**, configure **`OLLAMA_ORIGINS`**, restart the server, use **`http://127.0.0.1:11434/v1`**. Prefer the product’s **gateway URL** when docs specify `hermes --gateway` / `pnpm dev` so the client matches the supported topology. Details: **`AGENTS.md` → "Local OpenAI-compatible backends & browser UIs"**.
 
 ## MCP stack (project `.cursor/mcp.json`)
 

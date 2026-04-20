@@ -24,6 +24,10 @@ alwaysApply: true
 - Smallest useful diff; match existing imports and patterns in callers.
 - This fork tracks **upstream** `Gitlawb/openclaude` — merge `upstream/main` when preparing shared contributions (see `.cursor/skills/local-handbook/memory.md`).
 
+## Local backends in the browser
+
+If a user sees **"Failed to fetch"** for Hermes Workspace (or any browser UI) against **Ollama** while **`curl` works**, treat it as **CORS** first: **`OLLAMA_ORIGINS`** + restart Ollama, base URL **`http://127.0.0.1:11434/v1`**. Full checklist and links live in **`AGENTS.md` → "Local OpenAI-compatible backends & browser UIs"**.
+
 ## Optional “superpowers” on this machine
 
 Install **Cursor marketplace / plugin** packs you already use elsewhere so they apply here too, for example:
