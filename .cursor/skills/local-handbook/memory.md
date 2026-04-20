@@ -16,3 +16,10 @@ Keep **`upstream`** as a remote and merge **`upstream/main`** into your working 
 ## Machine-specific notes (optional)
 
 Cross-machine preferences (OS paths, personal MCP layout, etc.) belong in **your own** `~/.cursor/skills/local-handbook/memory.md`, not in this repo.
+
+## In-repo Cursor extras (this workspace)
+
+- **Rules:** `.cursor/rules/openclaude-*.mdc` (core always-on; providers/tools are glob-scoped).
+- **MCP:** `.cursor/mcp.json` (Playwright, Sequential Thinking, Memory).
+- **Power workflow skill:** `.cursor/skills/openclaude-powerkit/SKILL.md`.
+- **Editor recommendations:** `.vscode/extensions.json` (Bun + Python for `python/tests`).

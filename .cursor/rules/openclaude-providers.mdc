@@ -1,0 +1,12 @@
+---
+description: Conventions when editing OpenClaude provider shims and API layer
+globs: src/services/api/**/*.ts
+alwaysApply: false
+---
+
+# Providers (`src/services/api/`)
+
+- Read **existing callers** and **tests** under `src/services/api/*.test.ts` before changing transport, headers, or env resolution.
+- **`bun run test:provider`** is the narrow gate for this area when you touch provider code or shared API utils.
+- Keep behavior aligned with **`providerConfig`** and env helpers already in the tree; avoid new global singletons.
+- For reachability / base URL logic, prefer helpers and types already defined alongside `providerConfig` rather than duplicating URL parsing.

@@ -1,0 +1,11 @@
+---
+description: Conventions for tools, MCP entrypoints, and permissions-sensitive paths
+globs: src/tools/**/*.ts,src/tools/**/*.tsx,src/entrypoints/mcp.ts,src/utils/permissions/**/*.ts
+alwaysApply: false
+---
+
+# Tools and MCP
+
+- **Tools:** implement against existing `Tool` / permission patterns; follow sibling tools in `src/tools/` for naming, error strings, and lazy imports.
+- **MCP:** `src/entrypoints/mcp.ts` and nearby tests define behavior — run the relevant **`bun test`** subset for files you change.
+- **Permissions:** edits under `src/utils/permissions/` affect security posture — prefer extending existing helpers; add tests when behavior changes.
