@@ -1,0 +1,35 @@
+---
+description: OpenClaude repo defaults — verify with Bun, read AGENTS.md, safe secrets
+alwaysApply: true
+---
+
+# OpenClaude (core)
+
+## Before substantive work
+
+1. Open **`AGENTS.md`** at the repo root for the command table, layout, and workflow.
+2. Prefer **`bun run smoke`** after build-affecting changes; use **`bun test`** (or narrower scripts from AGENTS) for logic you touched.
+3. If **`bun` is missing** in the terminal, ensure `PATH` includes `~/.bun/bin`, `/opt/homebrew/bin`, and `/usr/local/bin` (workspace `.vscode/settings.json` prepends these for integrated terminals).
+
+## Code map (quick)
+
+- **Providers / APIs:** `src/services/api/`
+- **Tools:** `src/tools/`
+- **MCP entry:** `src/entrypoints/mcp.ts`
+- **CLI build:** `bun run scripts/build.ts` → `dist/cli.mjs`
+
+## Guardrails
+
+- Never commit API keys; use env vars and local config only.
+- Smallest useful diff; match existing imports and patterns in callers.
+- This fork tracks **upstream** `Gitlawb/openclaude` — merge `upstream/main` when preparing shared contributions (see `.cursor/skills/local-handbook/memory.md`).
+
+## Optional “superpowers” on this machine
+
+Install **Cursor marketplace / plugin** packs you already use elsewhere so they apply here too, for example:
+
+- **Superpowers** (official Claude plugins bundle): brainstorming, verification-before-completion, systematic debugging, writing-plans — search the marketplace for the maintained bundle name you use.
+- **MCP (project `.cursor/mcp.json`):** **Playwright** (browser tools), **Sequential Thinking** (structured reasoning tool), **Memory** (Knowledge Graph memory). Reload MCP in Cursor after edits. For Playwright, keep Chromium installed (`npx playwright install chromium` if browser tools fail to launch).
+- **Library docs:** Context7 or similar MCP if you have it configured globally — add the same server block to this project’s `.cursor/mcp.json` when you want parity.
+
+Do not assume a plugin is installed: if a workflow requires it, say so and offer the exact install path (Marketplace name or MCP JSON snippet).

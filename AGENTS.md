@@ -16,6 +16,9 @@ OpenClaude is a **terminal-first coding-agent CLI** (TypeScript / Bun) that spea
 - **Runtime:** [Bun](https://bun.sh) for development scripts and tests.
 - **Build output:** `dist/cli.mjs` (produced by `bun run scripts/build.ts`).
 - **CLI entry (local):** `node dist/cli.mjs` after a successful build, or `bin/openclaude` during development.
+- **Tooling on PATH:** Some editors run shells with a minimal `PATH`, so `bun` may be missing even when Homebrew or `~/.bun/bin` is installed.
+  - This repo includes **`.vscode/settings.json`** so VS Code / Cursor integrated terminals prepend `~/.bun/bin`, `/opt/homebrew/bin`, and `/usr/local/bin` on macOS (and `~/.bun/bin` + `/usr/local/bin` on Linux).
+  - After cloning, run **`bun install --frozen-lockfile`** before tests so everything in `package.json` is present under `node_modules/`.
 
 Always **`bun run build`** (or `bun run smoke`) after pulling `main` if `dist/` might be stale.
 
@@ -67,6 +70,17 @@ The directory `.cursor/skills/local-handbook/` exists for **Cursor Agent** users
 - **link back here** for anything that applies to all tools.
 
 If guidance diverges, **this `AGENTS.md` wins**.
+
+Other **Cursor / VS Code** assets in this repo (all optional for non-Cursor workflows):
+
+| Path | Purpose |
+|------|---------|
+| `.cursor/rules/openclaude-*.mdc` | Project rules (core always-on; scoped rules for providers and tools/MCP). |
+| `.cursor/mcp.json` | Pinned MCP servers (Playwright, Sequential Thinking, Memory) — reload MCP in the editor after changes. |
+| `.cursor/skills/openclaude-powerkit/` | Extra skill: verification ladder and MCP notes for this codebase. |
+| `.vscode/settings.json` | Terminal `PATH` prepends for Homebrew / Bun on macOS and Linux. |
+| `.vscode/extensions.json` | Recommended extensions (Bun, Python for `python/tests`). |
+| `.vscode/tasks.json` | Palette tasks for **Smoke**, **Unit tests**, **Provider tests**, **Runtime doctor**. |
 
 ## Further reading
 
