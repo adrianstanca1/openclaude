@@ -34,7 +34,7 @@ OpenClaude often uses `OPENAI_BASE_URL` against a local server (e.g. [Ollama](ht
 curl -sS -D- -o /dev/null -H "Origin: https://example.com" "http://127.0.0.1:11434/v1/models" | head -20
 ```
 
-You want a **2xx** status and **`Access-Control-Allow-Origin`** (or equivalent) on the response once CORS is configured.
+On **GET/POST** responses you want **2xx** plus **`Access-Control-Allow-Origin`** (matching your UI origin or `*`, depending on policy). For **`OPTIONS`** preflight responses, also expect **`Access-Control-Allow-Methods`** and **`Access-Control-Allow-Headers`** to include what the browser sends (e.g. `POST`, `Content-Type`, `Authorization`). If the UI sends cookies or `Authorization: Bearer …` with credentials mode, **`Access-Control-Allow-Credentials: true`** must pair with a **specific** origin (not `*`).
 
 - **Gateway products:** when docs recommend **`pnpm dev`** / **`hermes --gateway`**, point the UI at the **gateway base URL** they print so TLS, routing, and CORS match what the client expects — do not assume a raw Ollama port is enough for every UI.
 
