@@ -25,6 +25,8 @@ description: >-
 
 Do not claim green without running the narrowest relevant command(s) and showing pass/fail.
 
+In **VS Code / Cursor**, you can run the same checks via **Tasks: Run Task** → **OpenClaude: smoke** (or unit / provider / doctor tasks from `.vscode/tasks.json`).
+
 ## Where to edit
 
 - **Providers:** `src/services/api/` — see **`.cursor/rules/openclaude-providers.mdc`** when those globs apply.

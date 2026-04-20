@@ -1,0 +1,76 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "OpenClaude: smoke",
+      "type": "shell",
+      "command": "bun run smoke",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "${env:HOME}/.bun/bin:/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
+        }
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "OpenClaude: unit tests",
+      "type": "shell",
+      "command": "bun test --max-concurrency=1",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "${env:HOME}/.bun/bin:/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
+        }
+      },
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "OpenClaude: provider tests",
+      "type": "shell",
+      "command": "bun run test:provider",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "${env:HOME}/.bun/bin:/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
+        }
+      },
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "OpenClaude: runtime doctor",
+      "type": "shell",
+      "command": "bun run doctor:runtime",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "PATH": "${env:HOME}/.bun/bin:/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
+        }
+      },
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

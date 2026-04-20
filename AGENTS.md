@@ -69,6 +69,17 @@ The directory `.cursor/skills/local-handbook/` exists for **Cursor Agent** users
 
 If guidance diverges, **this `AGENTS.md` wins**.
 
+Other **Cursor / VS Code** assets in this repo (all optional for non-Cursor workflows):
+
+| Path | Purpose |
+|------|---------|
+| `.cursor/rules/openclaude-*.mdc` | Project rules (core always-on; scoped rules for providers and tools/MCP). |
+| `.cursor/mcp.json` | Pinned MCP servers (Playwright, Sequential Thinking, Memory) — reload MCP in the editor after changes. |
+| `.cursor/skills/openclaude-powerkit/` | Extra skill: verification ladder and MCP notes for this codebase. |
+| `.vscode/settings.json` | Terminal `PATH` prepends for Homebrew / Bun on macOS and Linux. |
+| `.vscode/extensions.json` | Recommended extensions (Bun, Python for `python/tests`). |
+| `.vscode/tasks.json` | Palette tasks for **Smoke**, **Unit tests**, **Provider tests**, **Runtime doctor**. |
+
 ## Further reading
 
 - **Hermes-style agent guide** (reference for structure and depth): `https://github.com/NousResearch/hermes-agent/blob/main/AGENTS.md`

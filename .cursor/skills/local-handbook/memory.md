@@ -23,3 +23,4 @@ Cross-machine preferences (OS paths, personal MCP layout, etc.) belong in **your
 - **MCP:** `.cursor/mcp.json` (Playwright, Sequential Thinking, Memory).
 - **Power workflow skill:** `.cursor/skills/openclaude-powerkit/SKILL.md`.
 - **Editor recommendations:** `.vscode/extensions.json` (Bun + Python for `python/tests`).
+- **Tasks:** `.vscode/tasks.json` (Smoke, unit tests, provider tests, runtime doctor).
