@@ -38,7 +38,7 @@ You want a **2xx** status and **`Access-Control-Allow-Origin`** (or equivalent) 
 
 - **Gateway products:** when docs recommend **`pnpm dev`** / **`hermes --gateway`**, point the UI at the **gateway base URL** they print so TLS, routing, and CORS match what the client expects — do not assume a raw Ollama port is enough for every UI.
 
-Hermes-oriented reference: [hermes-agent `AGENTS.md`](https://github.com/NousResearch/hermes-agent/blob/main/AGENTS.md) and [FAQ & troubleshooting](https://hermes-agent.nousresearch.com/docs/reference/faq).
+Hermes links live under **Further reading** (avoid duplicating URLs here).
 
 ## Repository map (high level)
 
@@ -98,9 +98,10 @@ Other **Cursor / VS Code** assets in this repo (all optional for non-Cursor work
 | `.cursor/skills/openclaude-powerkit/` | Extra skill: verification ladder and MCP notes for this codebase. |
 | `.vscode/settings.json` | Terminal `PATH` prepends for Homebrew / Bun on macOS and Linux. |
 | `.vscode/extensions.json` | Recommended extensions (Bun, Python for `python/tests`). |
-| `.vscode/tasks.json` | Palette tasks for **Smoke**, **Unit tests**, **Provider tests**, **Runtime doctor**. |
+| `.vscode/tasks.json` | Palette tasks for **Smoke**, **Unit tests**, **Provider tests**, **Runtime doctor** (via **`scripts/cursor-dev-path.sh`** so PATH matches integrated terminals). |
+| `scripts/cursor-dev-path.sh` | Shared PATH prepend for **macOS / Linux** (used by `tasks.json`; mirrors `.vscode/settings.json`). |
 
 ## Further reading
 
-- **Hermes-style agent guide** (reference for structure and depth): `https://github.com/NousResearch/hermes-agent/blob/main/AGENTS.md`
+- **Hermes / Nous:** [hermes-agent `AGENTS.md`](https://github.com/NousResearch/hermes-agent/blob/main/AGENTS.md) (structure and depth) and [FAQ & troubleshooting](https://hermes-agent.nousresearch.com/docs/reference/faq) (operators, browser UIs, gateways).
 - **Human-facing docs:** `README.md`, `docs/`, `SECURITY.md`

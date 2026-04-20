@@ -36,17 +36,9 @@ In **VS Code / Cursor**, you can run the same checks via **Tasks: Run Task** →
 
 When **`curl …/v1/models` succeeds** but a **browser** shows **Failed to fetch** against the same host, assume **CORS** until disproven. For **Ollama**, configure **`OLLAMA_ORIGINS`**, restart the server, use **`http://127.0.0.1:11434/v1`**. Prefer the product’s **gateway URL** when docs specify `hermes --gateway` / `pnpm dev` so the client matches the supported topology. Details: **`AGENTS.md` → "Local OpenAI-compatible backends & browser UIs"**.
 
-## MCP stack (project `.cursor/mcp.json`)
+## MCP stack
 
-Reload MCP in Cursor after changing this file.
-
-| Server | Role |
-|--------|------|
-| **playwright** | Browser automation (`browser_*` tools); install Chromium if needed: `npx playwright install chromium` |
-| **sequential-thinking** | Official `sequential_thinking` tool for stepwise / revisable reasoning |
-| **memory** | Official Knowledge Graph memory server for durable session notes |
-
-Add API-key MCPs (e.g. Context7, Firecrawl) in your **user** MCP config or paste blocks here when you want them in-repo.
+Servers are declared in **`.cursor/mcp.json`** and summarized in **`AGENTS.md`** (*Where Cursor-specific files fit*) — avoid duplicating the list here. Reload MCP in Cursor after edits. **Playwright:** `npx playwright install chromium` if browser tools fail. Add API-key MCPs in your **user** config or extend `.cursor/mcp.json` when you want them in-repo.
 
 ## Optional plugins (your machine)
 
