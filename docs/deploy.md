@@ -2,6 +2,17 @@
 
 This document covers every supported way to get **`openclaude`** onto a machine: from npm, from a source checkout, as a tarball, and how **upstream** publishes. Fork maintainers: see **Fork-scoped npm** at the end.
 
+## Quick reference (`package.json`)
+
+| Script | Equivalent shell |
+|--------|-------------------|
+| `bun run deploy:registry` | `bash scripts/deploy-from-source.sh registry` |
+| `bun run deploy:install-global` | `bash scripts/deploy-from-source.sh global` |
+| `bun run deploy:link` | `bash scripts/deploy-from-source.sh link` |
+| `bun run deploy:pack` | `bash scripts/deploy-from-source.sh pack` |
+
+Run `bash scripts/deploy-from-source.sh help` for the same usage text. Palette tasks **OpenClaude: deploy pack** / **OpenClaude: deploy link** live in `.vscode/tasks.json` (PATH via `cursor-dev-path.sh`).
+
 ## 1. Install from npm (recommended for users)
 
 Uses the package published by maintainers (`@gitlawb/openclaude`).

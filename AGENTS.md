@@ -38,6 +38,8 @@ Pick the **narrowest** check that covers your change. When in doubt, at least `b
 | Provider recommendation tests | `bun run test:provider-recommendation` |
 | Stricter gate (typecheck + smoke + runtime doctor) | `bun run hardening:strict` |
 | Runtime / profile diagnostics | `bun run doctor:runtime` |
+| Pack tarball from checkout | `bun run deploy:pack` (see `docs/deploy.md`) |
+| Install / link / registry deploy paths | `docs/deploy.md`; `bun run deploy:*` |
 
 CI runs **PR Checks** on GitHub; align with those workflows when you touch packaging, entrypoints, or core paths.
 

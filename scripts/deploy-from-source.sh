@@ -6,16 +6,24 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 usage() {
-  echo "Usage: $0 {pack|link|global|registry}" >&2
+  echo "Usage: $0 {pack|link|global|registry|help}" >&2
   echo "  pack     — bun install, npm pack (prepack runs build → .tgz in repo root)" >&2
   echo "  link     — bun install, build, npm link (dev symlink)" >&2
   echo "  global   — bun install, build, npm install -g . (global openclaude from this tree)" >&2
   echo "  registry — npm install -g @gitlawb/openclaude@latest (official publish)" >&2
-  exit 1
+  echo "  help     — print this message and exit 0" >&2
 }
 
 MODE="${1:-}"
 case "$MODE" in
+help)
+  usage
+  exit 0
+  ;;
+"")
+  usage
+  exit 1
+  ;;
 pack)
   bun install --frozen-lockfile
   npm pack
@@ -35,5 +43,6 @@ registry)
   ;;
 *)
   usage
+  exit 1
   ;;
 esac
