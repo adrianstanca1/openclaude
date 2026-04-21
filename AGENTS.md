@@ -54,4 +54,7 @@ This repository **does not** ship editor-only trees (for example `.cursor/` or t
 ## Further reading
 
 - [docs/agent-workflow.md](docs/agent-workflow.md) — repository map, local OpenAI-compatible servers, browser CORS, fork sync.
-- [Hermes agent `AGENTS.md`](https://github.com/NousResearch/hermes-agent/blob/main/AGENTS.md) — example of a deeper, project-wide agent guide (structure reference only).
+- **Deploy / install:** [docs/deploy.md](docs/deploy.md) (registry, source, tarball, upstream release, fork npm).
+- **Hermes / Nous:** [hermes-agent `AGENTS.md`](https://github.com/NousResearch/hermes-agent/blob/main/AGENTS.md) (structure and depth) and [FAQ & troubleshooting](https://hermes-agent.nousresearch.com/docs/reference/faq) (operators, browser UIs, gateways).
+- **Human-facing docs:** `README.md`, `docs/`, `SECURITY.md`
+
