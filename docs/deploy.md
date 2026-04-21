@@ -26,7 +26,7 @@ From the repo you can run the same via:
 
 ```bash
 bun run deploy:registry
-# equivalent: ./scripts/deploy-from-source.sh registry
+# equivalent: bash scripts/deploy-from-source.sh registry
 ```
 
 ## 2. Global install from a git checkout
@@ -37,10 +37,10 @@ After cloning, install dependencies, build the bundle, then install globally fro
 cd openclaude
 bun install --frozen-lockfile
 bun run deploy:install-global
-# equivalent: ./scripts/deploy-from-source.sh global
+# equivalent: bash scripts/deploy-from-source.sh global
 ```
 
-Requires **Bun** and **npm**. This installs whatever version is in **`package.json`** (e.g. `0.4.0`).
+Requires **Bun** and **npm**. This installs whatever **`version`** is set to in **`package.json`** at install time.
 
 ## 3. Development link (`npm link`)
 
@@ -49,7 +49,7 @@ Keeps `openclaude` pointing at your working tree (good for active development).
 ```bash
 bun install --frozen-lockfile
 bun run deploy:link
-# equivalent: ./scripts/deploy-from-source.sh link
+# equivalent: bash scripts/deploy-from-source.sh link
 ```
 
 ## 4. Pack a tarball (CI, air-gapped, or manual install)
@@ -59,16 +59,15 @@ bun run deploy:link
 ```bash
 bun install --frozen-lockfile
 bun run deploy:pack
-# equivalent: ./scripts/deploy-from-source.sh pack
+# equivalent: bash scripts/deploy-from-source.sh pack
 ```
 
-Install elsewhere:
+Install elsewhere (use the **exact** `.tgz` name printed by `npm pack`, or a glob that resolves to one file):
 
 ```bash
-npm install -g ./gitlawb-openclaude-0.4.0.tgz
+npm install -g ./gitlawb-openclaude-<version>.tgz
+# e.g. ./gitlawb-openclaude-0.5.2.tgz — the middle segment matches package.json "version"
 ```
-
-(Version in the filename follows **`package.json`**.)
 
 ## 5. Upstream automated release (GitHub + npm + GHCR)
 
